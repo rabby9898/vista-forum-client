@@ -124,8 +124,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="px-5 md:px-8 lg:px-32 py-5 md:py-3 bg-[currentColor]">
-      <div className="navbar">
+    <div className="">
+      <div className="navbar  fixed z-10 bg-opacity-0 bg-black px-5 md:px-8 lg:px-32 py-5 md:py-10">
         <div className="navbar-start ">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
