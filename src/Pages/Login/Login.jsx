@@ -75,7 +75,7 @@ const Login = () => {
             <input
               type="email"
               name="email"
-              placeholder="email"
+              placeholder="Email"
               className="input input-bordered"
             />
           </div>
