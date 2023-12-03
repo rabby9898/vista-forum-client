@@ -4,9 +4,12 @@ import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useAxiosPublic from "../../Hook/useAxiosPublic/useAxiosPublic";
+import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
 const SignUp = () => {
   const navigate = useNavigate();
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, googleSignIn } =
+    useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const {
     register,
@@ -29,6 +32,14 @@ const SignUp = () => {
             axiosPublic.post("/users", userInfo).then((res) => {
               if (res.data.insertedId) {
                 console.log("user added to database");
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title:
+                    "Successfully Signed in! You Are Now Bronze Badge Member",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
                 navigate("/");
               }
             });
@@ -41,6 +52,26 @@ const SignUp = () => {
         console.log(err);
       });
     console.log(data);
+  };
+  const handleGoogleSignIn = () => {
+    googleSignIn().then((result) => {
+      console.log(result.user);
+      const userInfo = {
+        email: result.user?.email,
+        name: result.user?.displayName,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Successfully Signed in! You Are Now Bronze Badge Member",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      });
+    });
   };
   return (
     <div
@@ -152,6 +183,12 @@ const SignUp = () => {
                   Go to login page
                 </Link>
               </p>
+              <button
+                onClick={handleGoogleSignIn}
+                className="w-full flex justify-center items-center bg-transparent text-purple-600 gap-1 border border-purple-600 border-gray rounded-lg py-2 mt-10 mb-3 text-base"
+              >
+                <FcGoogle className="text-xl" /> Sign up With Google
+              </button>
             </div>
           </div>
         </form>

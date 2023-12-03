@@ -4,14 +4,17 @@ import { FaUserCircle } from "react-icons/fa";
 import { IoNotificationsSharp } from "react-icons/io5";
 import logo from "../../assets/logo.png";
 import useAnnounce from "../../Hook/useAnnounce/useAnnounce";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
+  const { logOut, user } = useContext(AuthContext);
   const [announcement] = useAnnounce();
-  //   const handleLogOut = () => {
-  //     logOut()
-  //       .then(() => {})
-  //       .catch((err) => console.log(err));
-  //   };
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
   const links = (
     <>
       <li className="mr-8">
@@ -50,37 +53,51 @@ const Navbar = () => {
           </button>
         </NavLink>
       </li>
-      <li className="mr-8">
-        <NavLink
-          to="/login"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-purple-500" : ""
-          }
-        >
-          join Us
-        </NavLink>
-      </li>
-      <li className="mr-8">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className=" m-1">
-            <FaUserCircle className="text-2xl"></FaUserCircle>
-          </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-black text-lg font-semibold"
+      {!user && (
+        <li className="mr-8">
+          <NavLink
+            to="/login"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "text-purple-500" : ""
+            }
           >
-            <li>
-              <a>Name</a>
-            </li>
-            <li>
-              <a>Dashboard</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div>
-      </li>
+            join Us
+          </NavLink>
+        </li>
+      )}
+      {user && (
+        <li className="mr-8">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className=" ">
+              {user ? (
+                <>
+                  <div className="avatar">
+                    <div className="w-[50px] rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 h-[50px]">
+                      <img src={user?.photoURL} />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <FaUserCircle className="text-2xl"></FaUserCircle>
+              )}
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-black text-lg font-semibold"
+            >
+              <li>
+                <a>{user?.displayName ? user?.displayName : "Anonymous"}</a>
+              </li>
+              <li>
+                <NavLink to="/dashboard">Dashboard</NavLink>
+              </li>
+              <li>
+                <a onClick={handleLogOut}>Logout</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      )}
 
       {/* <li className="mr-8">
         <NavLink
@@ -163,7 +180,7 @@ const Navbar = () => {
           <img className="w-[200px]" src={logo} alt="logo" />
         </div>
         <div className="navbar-end hidden lg:flex">
-          <ul className="menu-horizontal px-1 text-white text-lg font-semibold">
+          <ul className="menu-horizontal px-1 text-white text-lg font-semibold items-center">
             {links}
           </ul>
         </div>

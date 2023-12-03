@@ -27,13 +27,11 @@ const Login = () => {
       const user = result.user;
       console.log(user);
       Swal.fire({
-        title: "Logged in successful.",
-        showClass: {
-          popup: "animate__animated animate__fadeInDown",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutUp",
-        },
+        position: "top-center",
+        icon: "success",
+        title: "Successfully Logged in!",
+        showConfirmButton: false,
+        timer: 1500,
       });
       navigate(from, { replace: true });
     });
@@ -47,6 +45,13 @@ const Login = () => {
       };
       axiosPublic.post("/users", userInfo).then((res) => {
         console.log(res.data);
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Successfully Logged in!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/");
       });
     });
@@ -97,18 +102,22 @@ const Login = () => {
           </div>
           <div className="form-control mt-6">
             {/* TODO: apply disabled for re captcha */}
-            <input className="btn btn-primary" type="submit" value="Login" />
+            <input
+              className="btn btn-primary bg-purple-600 text-white"
+              type="submit"
+              value="Login"
+            />
             <div>
               <button
                 onClick={handleGoogleSignIn}
-                className="w-full flex justify-center items-center gap-1 border-2 border-gray rounded-lg py-2 mt-10 mb-3 text-base"
+                className="w-full flex justify-center items-center bg-transparent text-purple-600 gap-1 border border-purple-600 border-gray rounded-lg py-2 mt-10 mb-3 text-base"
               >
                 <FcGoogle className="text-xl" /> Sign up With Google
               </button>
               <div>
-                <p className="mt-4 block text-center font-sans text-base font-normal leading-relaxed text-yellow-500 antialiased">
+                <p className="mt-4 block text-center font-sans text-base font-normal leading-relaxed text-purple-600 antialiased">
                   New user?{" "}
-                  <Link className="font-bold text-yellow-500" to="/signUp">
+                  <Link className="font-bold text-purple-600" to="/signUp">
                     Create your account
                   </Link>
                 </p>
