@@ -52,7 +52,7 @@ const Navbar = () => {
       </li>
       <li className="mr-8">
         <NavLink
-          to="/joinUs"
+          to="/login"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-purple-500" : ""
           }
