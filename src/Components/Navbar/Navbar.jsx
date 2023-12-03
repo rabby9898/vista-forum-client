@@ -1,6 +1,8 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-import { FaShoppingCart } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
+import { IoNotificationsSharp } from "react-icons/io5";
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
   //   const handleLogOut = () => {
@@ -14,7 +16,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-orange-400" : ""
+            isPending ? "pending" : isActive ? "text-purple-500" : ""
           }
         >
           Home
@@ -22,36 +24,57 @@ const Navbar = () => {
       </li>
       <li className="mr-8">
         <NavLink
-          to="/contactUs"
+          to="/membership"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-orange-400" : ""
+            isPending ? "pending" : isActive ? "text-purple-500" : ""
           }
         >
           Membership
         </NavLink>
       </li>
-      <li className="mr-8">
+      <li className="mr-8 mt-1">
         <NavLink
-          to="/menu"
+          to="/"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-orange-400" : ""
+            isPending ? "pending" : isActive ? "text-purple-500" : ""
           }
         >
-          Notifications
+          <IoNotificationsSharp className="text-2xl" />
         </NavLink>
       </li>
       <li className="mr-8">
         <NavLink
-          to="/shop/salad"
+          to="/joinUs"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-orange-400" : ""
+            isPending ? "pending" : isActive ? "text-purple-500" : ""
           }
         >
           join Us
         </NavLink>
       </li>
-
       <li className="mr-8">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className=" m-1">
+            <FaUserCircle className="text-2xl"></FaUserCircle>
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 text-black text-lg font-semibold"
+          >
+            <li>
+              <a>Name</a>
+            </li>
+            <li>
+              <a>Dashboard</a>
+            </li>
+            <li>
+              <a>Logout</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      {/* <li className="mr-8">
         <NavLink
           to="/dashboard/adminHome"
           className={({ isActive, isPending }) =>
@@ -60,9 +83,9 @@ const Navbar = () => {
         >
           Dashboard
         </NavLink>
-      </li>
+      </li> */}
 
-      {user ? (
+      {/* {user ? (
         <li className="mr-8">
           <NavLink
             onClick={handleLogOut}
@@ -97,12 +120,12 @@ const Navbar = () => {
             </button>
           </Link>
         </>
-      )}
+      )} */}
     </>
   );
   return (
-    <div className="">
-      <div className="navbar fixed z-10 bg-opacity-30 bg-black max-w-7xl px-10">
+    <div className="px-5 md:px-8 lg:px-32 py-5 md:py-3 bg-[currentColor]">
+      <div className="navbar">
         <div className="navbar-start ">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -128,10 +151,13 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className=" text-xl text-white">Bistro Boss</a>
+
+          <img className="w-[200px]" src={logo} alt="logo" />
         </div>
-        <div className="navbar-center items-center hidden lg:flex">
-          <ul className="menu-horizontal px-1 text-white">{links}</ul>
+        <div className="navbar-end hidden lg:flex">
+          <ul className="menu-horizontal px-1 text-white text-lg font-semibold">
+            {links}
+          </ul>
         </div>
       </div>
     </div>
