@@ -3,8 +3,10 @@ import { NavLink } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { IoNotificationsSharp } from "react-icons/io5";
 import logo from "../../assets/logo.png";
+import useAnnounce from "../../Hook/useAnnounce/useAnnounce";
 
 const Navbar = () => {
+  const [announcement] = useAnnounce();
   //   const handleLogOut = () => {
   //     logOut()
   //       .then(() => {})
@@ -34,12 +36,18 @@ const Navbar = () => {
       </li>
       <li className="mr-8 mt-1">
         <NavLink
-          to="/"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-purple-500" : ""
-          }
+          to=""
+          // className={({ isActive, isPending }) =>
+          //   isPending ? "pending" : isActive ? "text-purple-500" : ""
+          // }
         >
-          <IoNotificationsSharp className="text-2xl" />
+          <button className="flex">
+            <IoNotificationsSharp className="text-2xl" />
+            <div className="-mt-3 -ml-2 bg-transparent border-0 text-white">
+              {" "}
+              +{announcement.length}
+            </div>
+          </button>
         </NavLink>
       </li>
       <li className="mr-8">
@@ -125,7 +133,7 @@ const Navbar = () => {
   );
   return (
     <div className="">
-      <div className="navbar  fixed z-10 bg-opacity-0 bg-black px-5 md:px-8 lg:px-32 py-5 md:py-10">
+      <div className="navbar  fixed z-10 bg-opacity-30 bg-black px-5 md:px-8 lg:px-32 py-5">
         <div className="navbar-start ">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
