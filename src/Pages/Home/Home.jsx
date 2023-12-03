@@ -1,4 +1,4 @@
-import Announcement from "../../Components/Announcement/Announcement";
+import AnnounceData from "../../Components/AnnounceData/AnnounceData";
 import Banner from "../../Components/Banner/Banner";
 import Tags from "../../Components/Tags/Tags";
 
@@ -7,7 +7,7 @@ const Home = () => {
     <div>
       <Banner></Banner>
       <Tags></Tags>
-      <Announcement></Announcement>
+      <AnnounceData></AnnounceData>
     </div>
   );
 };
