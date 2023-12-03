@@ -2,10 +2,12 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../Hook/useAxiosSecure/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAllPosts from "../../../Hook/useAllPosts/useAllPosts";
 
 const AddPost = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
+  const [, refetch] = useAllPosts();
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -27,9 +29,10 @@ const AddPost = () => {
         tag,
         photo,
       };
-      axiosSecure.post("/posts", addPostInfo).then((res) => {
+      axiosSecure.post("/allPosts", addPostInfo).then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
+          form.reset();
           Swal.fire({
             position: "top-center",
             icon: "success",
@@ -37,6 +40,7 @@ const AddPost = () => {
             showConfirmButton: false,
             timer: 2000,
           });
+          refetch();
         }
       });
     }

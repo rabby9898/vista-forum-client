@@ -2,7 +2,9 @@ import { NavLink, Outlet } from "react-router-dom";
 import { AiOutlineProfile } from "react-icons/ai";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { BsFileEarmarkPost } from "react-icons/bs";
+import useAllPosts from "../../Hook/useAllPosts/useAllPosts";
 const Dashboard = () => {
+  const [allPost] = useAllPosts();
   return (
     <div className="flex">
       <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
@@ -43,7 +45,7 @@ const Dashboard = () => {
               <BsFileEarmarkPost></BsFileEarmarkPost>
             </div>
 
-            <NavLink to="/dashboard/myPost">My Post</NavLink>
+            <NavLink to="/dashboard/myPost">My Post({allPost.length})</NavLink>
           </div>
           <div
             role="button"
