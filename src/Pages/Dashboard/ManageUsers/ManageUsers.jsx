@@ -30,7 +30,7 @@ const ManageUsers = () => {
     });
   };
   return (
-    <div className="px-40 w-full py-10">
+    <div className="px-5 md:px-20 lg:px-40 w-full py-10">
       <div className="flex justify-center gap-20 ">
         <div>
           <h1 className="text-3xl">All Users</h1>

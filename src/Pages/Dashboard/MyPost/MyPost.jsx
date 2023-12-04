@@ -34,7 +34,7 @@ const MyPost = () => {
     });
   };
   return (
-    <div className="w-[800px] pl-20">
+    <div className="w-full md:w-[400px] lg:w-[800px] pl-5 md:pl-10 lg:pl-20">
       <div>
         <div>
           <h1 className="text-3xl font-semibold text-center">My Posts</h1>

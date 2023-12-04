@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         path: "/posts/:id",
         element: <PostPages></PostPages>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allPosts/${params.id}`),
+          fetch(`https://vista-forum-server.vercel.app/allPosts/${params.id}`),
       },
       {
         path: "/login",

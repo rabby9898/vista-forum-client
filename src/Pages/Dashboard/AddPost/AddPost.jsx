@@ -50,11 +50,14 @@ const AddPost = () => {
   };
 
   return (
-    <div className="px-36 py-20">
-      <div className="text-center py-10 w-[700px] mx-auto">
+    <div className="px-5 md:px-20 lg:px-36 py-20">
+      <div className="text-center py-10  w-full md:w-[450px] lg:w-[700px] mx-auto">
         <h1 className="text-4xl text-black font-bold">Add A New Post</h1>
       </div>
-      <form onSubmit={handleSubmit} className="w-[600px] mx-auto">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full md:w-[450px] lg:w-[600px] mx-auto"
+      >
         <div className="flex justify-center gap-8">
           <div className="form-control w-full max-w-xs">
             <label className="label">

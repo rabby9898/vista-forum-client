@@ -15,7 +15,7 @@ const Banner = () => {
             <div>
               <div>
                 <input
-                  className="input input-bordered join-item"
+                  className="input input-bordered join-item w-full"
                   placeholder="Search"
                 />
               </div>
@@ -24,8 +24,8 @@ const Banner = () => {
               <option disabled selected>
                 Filter
               </option>
-              <option>Sci-fi</option>
-              <option>Drama</option>
+              <option>Space</option>
+              <option>Technology</option>
               <option>Action</option>
             </select>
             <div className="indicator">

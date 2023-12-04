@@ -9,8 +9,8 @@ const PostsPages = () => {
   return (
     <div className="pt-5 md:pt-20 lg:pt-40">
       <div>
-        <div className="p-8 bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
-          <div className="px-16 py-20 bg-white dark:bg-gray-800 shadow rounded-lg w-[full]">
+        <div className="p-3 md:p-8 bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+          <div className="px-5 md:px-8 lg:px-16 py-20 bg-white dark:bg-gray-800 shadow rounded-lg w-full">
             <div className="flex mb-4">
               <img className="w-12 h-12 rounded-full" src={photo} />
               <div className="ml-2 mt-0.5">
@@ -47,7 +47,7 @@ const PostsPages = () => {
                 </div>
               </div>
               <div className="ml-1 text-gray-500 dark:text-gray-400 font-light">
-                <button className="btn w-full px-16">0 Comments</button>
+                <button className="btn w-full px-5 md:px-16">0 Comments</button>
               </div>
               <div>
                 <FaShareAlt className="text-2xl" />
