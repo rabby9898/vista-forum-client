@@ -10,6 +10,10 @@ import AddPost from "../Pages/Dashboard/AddPost/AddPost";
 import MyPost from "../Pages/Dashboard/MyPost/MyPost";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import AdminAnnounce from "../Pages/Dashboard/AdminAnnounce/AdminAnnounce";
+import UserHome from "../Layout/Dashboard/UserHome/UserHome";
+import AdminHome from "../Layout/Dashboard/AdminHome/AdminHome";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import AdminPrivateRoute from "./AdminPrivateRoute/AdminPrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -38,9 +42,17 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       // user access route
+      {
+        path: "userHome",
+        element: <UserHome></UserHome>,
+      },
       {
         path: "myProfile",
         element: <MyProfile></MyProfile>,
@@ -55,12 +67,28 @@ const router = createBrowserRouter([
       },
       // admin access routes
       {
+        path: "adminHome",
+        element: (
+          <AdminPrivateRoute>
+            <AdminHome></AdminHome>
+          </AdminPrivateRoute>
+        ),
+      },
+      {
         path: "manageUsers",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <AdminPrivateRoute>
+            <ManageUsers></ManageUsers>
+          </AdminPrivateRoute>
+        ),
       },
       {
         path: "makeAnnounce",
-        element: <AdminAnnounce></AdminAnnounce>,
+        element: (
+          <AdminPrivateRoute>
+            <AdminAnnounce></AdminAnnounce>
+          </AdminPrivateRoute>
+        ),
       },
     ],
   },

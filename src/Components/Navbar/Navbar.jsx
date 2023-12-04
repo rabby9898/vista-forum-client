@@ -6,10 +6,12 @@ import logo from "../../assets/logo.png";
 import useAnnounce from "../../Hook/useAnnounce/useAnnounce";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useIsAdmin from "../../Hook/useIsAdmin/useIsAdmin";
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
   const [announcement] = useAnnounce();
+  const [isAdmin] = useIsAdmin();
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -88,9 +90,20 @@ const Navbar = () => {
               <li>
                 <a>{user?.displayName ? user?.displayName : "Anonymous"}</a>
               </li>
-              <li>
-                <NavLink to="/dashboard">Dashboard</NavLink>
-              </li>
+              {user && isAdmin && (
+                <>
+                  <li>
+                    <NavLink to="/dashboard/adminHome">Dashboard</NavLink>
+                  </li>
+                </>
+              )}
+              {user && !isAdmin && (
+                <>
+                  <li>
+                    <NavLink to="/dashboard/userHome">Dashboard</NavLink>
+                  </li>
+                </>
+              )}
               <li>
                 <a onClick={handleLogOut}>Logout</a>
               </li>

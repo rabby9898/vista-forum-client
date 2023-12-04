@@ -6,9 +6,10 @@ import useAllPosts from "../../Hook/useAllPosts/useAllPosts";
 import { FaHome, FaUser, FaUsers } from "react-icons/fa";
 import { MdOutlineReport } from "react-icons/md";
 import { GrAnnounce } from "react-icons/gr";
+import useIsAdmin from "../../Hook/useIsAdmin/useIsAdmin";
 const Dashboard = () => {
   const [allPost] = useAllPosts();
-  const isAdmin = true;
+  const [isAdmin] = useIsAdmin();
   return (
     <div className="flex">
       <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
@@ -30,7 +31,7 @@ const Dashboard = () => {
                     <FaUser></FaUser>
                   </div>
 
-                  <NavLink to="/dashboard/adminProfile">Admin Profile</NavLink>
+                  <NavLink to="/dashboard/adminHome">Admin Profile</NavLink>
                 </li>
                 <li
                   role="button"
@@ -81,7 +82,7 @@ const Dashboard = () => {
                     <AiOutlineProfile></AiOutlineProfile>
                   </div>
 
-                  <NavLink to="/dashboard/myProfile">My Profile</NavLink>
+                  <NavLink to="/dashboard/userHome">My Profile</NavLink>
                 </li>
                 <li
                   role="button"
