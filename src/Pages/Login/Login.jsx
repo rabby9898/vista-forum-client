@@ -67,7 +67,7 @@ const Login = () => {
       className="h-max"
     >
       <Helmet>
-        <title>Bistro Boss | Login</title>
+        <title>Vista Forum | Login</title>
       </Helmet>
 
       <div className="pt-40">

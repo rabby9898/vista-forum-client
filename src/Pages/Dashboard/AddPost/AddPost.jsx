@@ -19,6 +19,8 @@ const AddPost = () => {
     const downVote = form.downVote.value;
     const photo = form.photo.value;
     if (user && user.email) {
+      const currentDate = new Date();
+      const formattedDate = currentDate.toISOString();
       const addPostInfo = {
         name,
         title,
@@ -28,6 +30,7 @@ const AddPost = () => {
         email: user.email,
         tag,
         photo,
+        date: formattedDate,
       };
       axiosSecure.post("/allPosts", addPostInfo).then((res) => {
         console.log(res.data);
