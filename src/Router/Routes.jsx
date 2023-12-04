@@ -8,6 +8,7 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
 import AddPost from "../Pages/Dashboard/AddPost/AddPost";
 import MyPost from "../Pages/Dashboard/MyPost/MyPost";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: <Dashboard></Dashboard>,
     children: [
+      // user access route
       {
         path: "myProfile",
         element: <MyProfile></MyProfile>,
@@ -49,6 +51,11 @@ const router = createBrowserRouter([
       {
         path: "myPost",
         element: <MyPost></MyPost>,
+      },
+      // admin access routes
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
       },
     ],
   },
