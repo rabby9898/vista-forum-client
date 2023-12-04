@@ -1,15 +1,34 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hook/useAxiosSecure/useAxiosSecure";
+import { FaUsers } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
-  const { data: users = [] } = useQuery({
+  const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get("/users");
       return res.data;
     },
   });
+
+  const handleMakeAdmin = (user) => {
+    axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount > 0) {
+        console.log("admin now");
+        refetch();
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: `${user.name} is admin now`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
+    });
+  };
   return (
     <div className="px-40 w-full py-10">
       <div className="flex justify-center gap-20 ">
@@ -40,9 +59,9 @@ const ManageUsers = () => {
                 <th>{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                {/* <td>
+                <td>
                   {user.role === "admin" ? (
-                    "Admin"
+                    <p className="text-purple-800 font-semibold">Admin</p>
                   ) : (
                     <>
                       <button
@@ -53,7 +72,7 @@ const ManageUsers = () => {
                       </button>
                     </>
                   )}
-                </td> */}
+                </td>
                 <td></td>
               </tr>
             ))}

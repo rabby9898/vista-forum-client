@@ -1,11 +1,11 @@
 const Announcement = ({ item }) => {
-  const { image, name, title, description } = item;
+  const { photo, name, title, description } = item;
   return (
     <div className="">
       <div className="relative flex w-[700px] flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
         <div className="relative flex items-center gap-4 pt-0 pb-8 mx-0 mt-4 overflow-hidden text-gray-700 bg-transparent shadow-none rounded-xl bg-clip-border">
           <img
-            src={image}
+            src={photo}
             alt="Tania Andrew"
             className="relative inline-block h-[58px] w-[58px] !rounded-full  object-cover object-center"
           />

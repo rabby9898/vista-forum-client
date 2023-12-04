@@ -9,6 +9,7 @@ import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
 import AddPost from "../Pages/Dashboard/AddPost/AddPost";
 import MyPost from "../Pages/Dashboard/MyPost/MyPost";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import AdminAnnounce from "../Pages/Dashboard/AdminAnnounce/AdminAnnounce";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "manageUsers",
         element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "makeAnnounce",
+        element: <AdminAnnounce></AdminAnnounce>,
       },
     ],
   },

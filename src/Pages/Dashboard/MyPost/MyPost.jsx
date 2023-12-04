@@ -62,7 +62,7 @@ const MyPost = () => {
                     <td className="text-right">{item.upVote}</td>
                     <td>
                       <Link to={`/comments:${item._id}`}>
-                        <button className="btn btn-ghost btn-lg bg-orange-500">
+                        <button className="btn btn-ghost bg-purple-500">
                           <FaComment
                             className="text-white 
                                       "
