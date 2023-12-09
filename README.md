@@ -1,5 +1,5 @@
 # Vista Forum Website : https://vista-forum.web.app/
-
+The forum website boasts a well-structured architecture with key features such as user authentication, dynamic content loading, user profile management, an admin dashboard with privileged access, and interactive content creation capabilities.
 ## Features
 
 ### 1. User Authentication and Authorization
